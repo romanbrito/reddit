@@ -35,4 +35,16 @@ router.post('/by-subreddit/', (req, res) => {
   });
 });
 
+router.get('/by-subreddit/:subreddit/:post_id', (req, res) => {
+  let post_id = req.params.post_id;
+
+  Post.findById(post_id, (err, doc) => {
+    if (err) {
+      next(err);
+    } else {
+      res.json(doc);
+    }
+  });
+});
+
 module.exports = router;

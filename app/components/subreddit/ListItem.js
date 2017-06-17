@@ -6,7 +6,7 @@ export default class ListItem extends Component {
 		return (
 			<li>
 
-				<Link to={"/" + this.props.post.subredditId + this.props.post._id}>
+				<Link to={"/" + this.props.post.subredditId + "/" + this.props.post._id}>
 
 				<h2>{this.props.post.title}</h2>
 				<p>{this.props.post.content}</p>
