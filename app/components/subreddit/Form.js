@@ -3,6 +3,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import axios from 'axios';
 
 injectTapEventPlugin();
 
@@ -18,8 +19,16 @@ class Form extends Component {
     // prevent the HTML from trying to submit a form if the user hits "Enter" instead of
     // clicking the button
     event.preventDefault();
+
     console.log('title ' + this.state.title);
     console.log('content ' + this.state.content);
+
+    const data = {};
+    data.content = this.state.content;
+    data.subredditId = this.props.params.subredditId;
+    data.title = this.state.title;
+
+    axios.post('/posts/by-subreddit', data);
 
   };
 
