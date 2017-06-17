@@ -30,12 +30,9 @@ router.post('/by-subreddit/', (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      console.log("saved post")
+      console.log("saved post");
     }
   });
-
-  //res.redirect('/');
-
 });
 
 module.exports = router;
