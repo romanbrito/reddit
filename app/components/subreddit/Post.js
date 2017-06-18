@@ -8,7 +8,7 @@ export default class Post extends Component {
     super();
 
     this.state = {
-      post: {}
+      post: {comments: []}
     }
   }
 
@@ -31,6 +31,21 @@ export default class Post extends Component {
       <div>
         <h2>{this.state.post.title}</h2>
         <p>{this.state.post.content}</p>
+        <p>{this.state.post._id}</p>
+
+
+        <div className="container">
+          <h2>Coments</h2>
+
+          <ul className="list-group">
+            {this.state.post.comments.map((item, i) => (
+              <li key={i} className="list-group-item">
+                {item}
+              </li>
+            ))}
+          </ul>
+
+        </div>
 
       </div>
 
