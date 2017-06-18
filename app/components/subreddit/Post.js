@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
-
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import RaisedButton from 'material-ui/RaisedButton';
 import axios from 'axios';
-import ListItem from './ListItem';
+
+import commentForm from './commentForm';
+
+import { Router, Route, Link } from 'react-router';
 
 export default class Post extends Component {
   constructor() {
@@ -31,11 +35,29 @@ export default class Post extends Component {
       <div>
         <h2>{this.state.post.title}</h2>
         <p>{this.state.post.content}</p>
-        <p>{this.state.post._id}</p>
+
+        {/* This code will allow us to automatically dump the correct GrandChild component */}
+        {this.props.children}
+
+
 
 
         <div className="container">
           <h2>Coments</h2>
+
+          <Link to={"/" + this.state.post.subredditId + "/" + this.state.post._id + "/" + "comments"}>
+          <MuiThemeProvider>
+            <RaisedButton
+              label={'Create New Comment'}
+              primary={true}
+              onTouchTap={() => {
+                console.log('it works')
+              }}
+              type="text"
+            />
+          </MuiThemeProvider>
+          </Link>
+
 
           <ul className="list-group">
             {this.state.post.comments.map((item, i) => (
