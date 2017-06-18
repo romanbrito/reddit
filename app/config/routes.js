@@ -12,7 +12,7 @@ module.exports = (
       <Route path="/:subredditId" component={Listing}/>
       <Route path="/:subredditId/new" component={Form}/>
       <Route path="/:subredditId/:post_id" component={Post}>
-        <Route path="comments" component={commentForm}/>
+        <Route path="newComment" component={commentForm}/>
       </Route>
 
       <IndexRoute component={Listing}/>

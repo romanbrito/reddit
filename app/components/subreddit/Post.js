@@ -45,7 +45,7 @@ export default class Post extends Component {
         <div className="container">
           <h2>Coments</h2>
 
-          <Link to={"/" + this.state.post.subredditId + "/" + this.state.post._id + "/" + "comments"}>
+          <Link to={"/" + this.state.post.subredditId + "/" + this.state.post._id + "/" + "newComment"}>
           <MuiThemeProvider>
             <RaisedButton
               label={'Create New Comment'}

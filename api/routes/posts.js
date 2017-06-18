@@ -35,6 +35,30 @@ router.post('/by-subreddit/', (req, res) => {
   });
 });
 
+router.put('/by-subreddit/', (req, res) => {
+  console.log(req.body);
+
+
+  // const entry = new Post(req.body.postID, );
+  //
+  // entry.findByIdAndUpdate((err,savedPost) => {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     console.log("saved post");
+  //   }
+  // });
+  Post.findByIdAndUpdate(req.body.postID, {$push:{comments: req.body.comment}},{'new':true},
+    (err, updatedDoc) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("updated");
+      //res.json(updatedDoc);
+    }
+  });
+});
+
 router.get('/by-subreddit/:subreddit/:post_id', (req, res) => {
   let post_id = req.params.post_id;
 
