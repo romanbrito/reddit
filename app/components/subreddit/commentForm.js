@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Link} from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import RaisedButton from 'material-ui/RaisedButton';
@@ -67,6 +68,20 @@ class commentForm extends Component {
             type="submit"
           />
         </MuiThemeProvider>
+
+        <Link to={"/" + this.props.params.subredditId + "/" + this.props.params.post_id}>
+          <MuiThemeProvider>
+            <RaisedButton
+              label={'close'}
+              secondary={true}
+              onTouchTap={() => {
+                console.log('it works')
+              }}
+              type="text"
+            />
+          </MuiThemeProvider>
+        </Link>
+
       </form>
     );
   }
