@@ -13,6 +13,7 @@ export default class Listing extends Component {
   }
 
   componentDidMount() {
+    console.log("component mounted listing");
     axios.get('/posts/by-subreddit/' + this.props.params.subredditId).then(posts => {
       this.setState({posts: posts.data});
     });

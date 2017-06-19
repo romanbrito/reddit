@@ -16,7 +16,22 @@ export default class Post extends Component {
     }
   }
 
+  componentDidUpdate(prevProps, prevState){
+
+    console.log("Post updated");
+    console.log("prev state comments " + prevState.post.comments.length);
+    console.log("this state comments " + this.state.post.comments.length);
+    axios.get('/posts/by-subreddit/' + this.props.params.subredditId + "/" + this.props.params.post_id).then(post => {
+      console.log("post data length" + post.data.comments.length);
+      console.log(("this state lenght" + this.state.post.comments.length))
+      if (post.data.comments.length !== this.state.post.comments.length) {
+      this.setState({post: post.data});
+      }
+    });
+  }
+
   componentDidMount() {
+    console.log("component mounted post");
     axios.get('/posts/by-subreddit/' + this.props.params.subredditId + "/" + this.props.params.post_id).then(post => {
       this.setState({post: post.data});
     });

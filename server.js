@@ -2,8 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const bodyParser = require('body-parser');
+import logger from 'morgan';
 import methodOverride from 'method-override';
 
+// Run Morgan for Logging
+app.use(logger('dev'));
 
 // body parser config
 app.use(bodyParser.json());

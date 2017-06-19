@@ -28,6 +28,7 @@ class commentForm extends Component {
     // data.title = this.state.title;
     //
     axios.post('/posts/by-subreddit?_method=PUT', data);
+    console.log(this.state);
 
   };
 
